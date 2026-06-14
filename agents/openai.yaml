@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Dev Docs"
+  short_description: "Generate AI-ready development document sets before building."
+  default_prompt: "Use $agent-dev-docs to turn this product idea into an AI-ready development document set."
