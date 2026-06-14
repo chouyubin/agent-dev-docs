@@ -1,113 +1,19 @@
 # Agent Dev Docs Skill
 
+> 在软件实现开始前，生成适合 AI Agent 执行的开发文档体系。<br>
 > Generate AI-ready development documentation before software implementation begins.
 
 <p align="center">
-  <a href="#english">English</a> |
-  <a href="#中文">中文</a>
+  <a href="#中文">中文</a> |
+  <a href="#english">English</a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Codex-Skill-blue.svg" alt="Codex Skill">
   <img src="https://img.shields.io/badge/docs-AI--ready-success.svg" alt="AI-ready docs">
-  <img src="https://img.shields.io/badge/language-English%20%7C%20中文-lightgrey.svg" alt="Language">
+  <img src="https://img.shields.io/badge/language-中文%20%7C%20English-lightgrey.svg" alt="Language">
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
 </p>
-
----
-
-## English
-
-[中文](#中文) | [License](#license) | [Disclaimer](#disclaimer)
-
-`agent-dev-docs` is a Codex skill that helps turn an idea, feature request, or existing repository into a practical AI-agent-friendly development document set.
-
-It is designed for AI-assisted software development workflows where future coding agents need clear goals, boundaries, architecture notes, task breakdowns, acceptance criteria, and project operating instructions before implementation starts.
-
-### Highlights
-
-| Capability | Description |
-| --- | --- |
-| AI-ready planning | Converts vague product ideas into explicit goals, constraints, assumptions, and acceptance criteria. |
-| Document map | Produces Vision/Requirements, PRD, Agent-Ready PRD, Design, Spec, Workplan, tests, and ops docs when useful. |
-| Agent instructions | Creates or updates `AGENTS.md`, `CLAUDE.md`, and `.ai/` workflow files for future coding agents. |
-| Repo-aware output | Adapts file placement to the existing repository structure instead of forcing a fixed layout. |
-| Minimal by default | Generates the smallest useful documentation set for the current stage. |
-| Assumption tracking | Marks unresolved decisions as assumptions or open questions instead of hiding ambiguity. |
-
-### Generated Documents
-
-Depending on the project stage, the skill can create or update:
-
-- `docs/vision-requirements.md`
-- `docs/prd.md`
-- `docs/agent-ready-prd.md`
-- `docs/design.md`
-- `docs/spec.md`
-- `docs/workplan.md`
-- `docs/development-standards.md`
-- `docs/test-boundary-cases.md`
-- `docs/ops-telemetry.md`
-- `AGENTS.md`
-- `CLAUDE.md`
-- `.ai/` workflow files, prompt templates, and checklists
-
-### When To Use
-
-Use this skill when you are:
-
-- Starting a new AI-assisted software project.
-- Turning a rough product idea into implementation-ready documentation.
-- Preparing an existing repository so future AI agents can contribute safely.
-- Creating an Agent-Ready PRD, implementation spec, or workplan.
-- Standardizing project instructions through `AGENTS.md`, `CLAUDE.md`, or `.ai/`.
-
-### Quick Start
-
-Install or place this folder in your Codex skills directory, then invoke it by name:
-
-```text
-Use $agent-dev-docs to turn this idea into an AI-ready development document set.
-```
-
-Feature-scoped example:
-
-```text
-Use $agent-dev-docs to create a PRD, Agent-Ready PRD, spec, and workplan for this feature.
-```
-
-### Skill Structure
-
-```text
-agent-dev-docs/
-  SKILL.md
-  README.md
-  LICENSE
-  agents/
-    openai.yaml
-  references/
-    doc-templates.md
-```
-
-### FAQ
-
-<details>
-<summary><b>Does this skill always generate every document?</b></summary>
-
-No. It should choose the smallest useful set based on the project stage. A new idea usually needs planning docs first; an existing repo may only need agent instructions, specs, tests, or ops notes.
-</details>
-
-<details>
-<summary><b>Will it overwrite existing documentation?</b></summary>
-
-It should preserve existing documentation. When intent is unclear, it should create feature-scoped files or clearly summarize proposed changes before updating shared docs.
-</details>
-
-<details>
-<summary><b>What makes an Agent-Ready PRD different from a normal PRD?</b></summary>
-
-An Agent-Ready PRD removes ambiguity for coding agents by spelling out states, business rules, inputs, outputs, error states, edge cases, acceptance criteria, and explicit non-goals.
-</details>
 
 ---
 
@@ -206,6 +112,101 @@ Agent-Ready PRD 会进一步消除 AI 编程 Agent 执行时的歧义，明确�
 
 ---
 
+## English
+
+[中文](#中文) | [License](#license) | [Disclaimer](#disclaimer)
+
+`agent-dev-docs` is a Codex skill that helps turn an idea, feature request, or existing repository into a practical AI-agent-friendly development document set.
+
+It is designed for AI-assisted software development workflows where future coding agents need clear goals, boundaries, architecture notes, task breakdowns, acceptance criteria, and project operating instructions before implementation starts.
+
+### Highlights
+
+| Capability | Description |
+| --- | --- |
+| AI-ready planning | Converts vague product ideas into explicit goals, constraints, assumptions, and acceptance criteria. |
+| Document map | Produces Vision/Requirements, PRD, Agent-Ready PRD, Design, Spec, Workplan, tests, and ops docs when useful. |
+| Agent instructions | Creates or updates `AGENTS.md`, `CLAUDE.md`, and `.ai/` workflow files for future coding agents. |
+| Repo-aware output | Adapts file placement to the existing repository structure instead of forcing a fixed layout. |
+| Minimal by default | Generates the smallest useful documentation set for the current stage. |
+| Assumption tracking | Marks unresolved decisions as assumptions or open questions instead of hiding ambiguity. |
+
+### Generated Documents
+
+Depending on the project stage, the skill can create or update:
+
+- `docs/vision-requirements.md`
+- `docs/prd.md`
+- `docs/agent-ready-prd.md`
+- `docs/design.md`
+- `docs/spec.md`
+- `docs/workplan.md`
+- `docs/development-standards.md`
+- `docs/test-boundary-cases.md`
+- `docs/ops-telemetry.md`
+- `AGENTS.md`
+- `CLAUDE.md`
+- `.ai/` workflow files, prompt templates, and checklists
+
+### When To Use
+
+Use this skill when you are:
+
+- Starting a new AI-assisted software project.
+- Turning a rough product idea into implementation-ready documentation.
+- Preparing an existing repository so future AI agents can contribute safely.
+- Creating an Agent-Ready PRD, implementation spec, or workplan.
+- Standardizing project instructions through `AGENTS.md`, `CLAUDE.md`, or `.ai/`.
+
+### Quick Start
+
+Install or place this folder in your Codex skills directory, then invoke it by name:
+
+```text
+Use $agent-dev-docs to turn this idea into an AI-ready development document set.
+```
+
+Feature-scoped example:
+
+```text
+Use $agent-dev-docs to create a PRD, Agent-Ready PRD, spec, and workplan for this feature.
+```
+
+### Skill Structure
+
+```text
+agent-dev-docs/
+  SKILL.md
+  README.md
+  LICENSE
+  agents/
+    openai.yaml
+  references/
+    doc-templates.md
+```
+
+### FAQ
+
+<details>
+<summary><b>Does this skill always generate every document?</b></summary>
+
+No. It should choose the smallest useful set based on the project stage. A new idea usually needs planning docs first; an existing repo may only need agent instructions, specs, tests, or ops notes.
+</details>
+
+<details>
+<summary><b>Will it overwrite existing documentation?</b></summary>
+
+It should preserve existing documentation. When intent is unclear, it should create feature-scoped files or clearly summarize proposed changes before updating shared docs.
+</details>
+
+<details>
+<summary><b>What makes an Agent-Ready PRD different from a normal PRD?</b></summary>
+
+An Agent-Ready PRD removes ambiguity for coding agents by spelling out states, business rules, inputs, outputs, error states, edge cases, acceptance criteria, and explicit non-goals.
+</details>
+
+---
+
 ## License
 
 MIT © 2026 chouyubin
@@ -216,6 +217,6 @@ See [LICENSE](LICENSE) for details.
 
 ## Disclaimer
 
-This project is provided for personal learning, research, and AI-assisted development workflow exploration. Users are responsible for reviewing, validating, and adapting any generated documentation before using it in real projects. The generated documents may contain assumptions, omissions, or inaccuracies, especially when project context is incomplete. The author is not liable for any direct or indirect consequences arising from the use of this skill or the documents it helps produce.
-
 本项目仅供个人学习、研究和 AI 辅助开发工作流探索使用。使用者应在真实项目中使用前，自行审查、验证并调整生成的文档。当项目信息不完整时，生成内容可能包含假设、遗漏或不准确之处。因使用本 skill 或其辅助生成的文档而产生的任何直接或间接后果，项目作者不承担责任。
+
+This project is provided for personal learning, research, and AI-assisted development workflow exploration. Users are responsible for reviewing, validating, and adapting any generated documentation before using it in real projects. The generated documents may contain assumptions, omissions, or inaccuracies, especially when project context is incomplete. The author is not liable for any direct or indirect consequences arising from the use of this skill or the documents it helps produce.
