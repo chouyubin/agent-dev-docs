@@ -76,7 +76,7 @@
 ```text
 用 $agent-dev-docs 为这个功能创建 PRD、Agent-Ready PRD、Spec 和 Workplan。
 ```
-
+###也可以下载项目后压缩成ZIP文件导入到CC Switch
 ### Skill 结构
 
 ```text
