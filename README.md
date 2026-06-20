@@ -36,6 +36,83 @@
 | 默认最小必要 | 优先生成当前阶段最有用、最小必要的文档集合。 |
 | 假设追踪 | 对未确认决策标记为假设或待确认问题，避免把模糊点藏起来。 |
 
+### 安装
+
+下载或克隆本仓库后，把整个 `agent-dev-docs` 目录放入 Codex skills 目录。
+
+常见位置：
+
+```text
+Windows: %USERPROFILE%\.codex\skills\agent-dev-docs
+macOS/Linux: ~/.codex/skills/agent-dev-docs
+```
+
+安装后重启或刷新 Codex，然后输入包含 `$agent-dev-docs` 的提示词即可调用。
+
+如果你使用 CC Switch，也可以下载本项目 ZIP 文件并通过 CC Switch 导入。请以 CC Switch 当前版本的导入流程为准。
+
+### 快速开始
+
+为一个新项目生成开发文档：
+
+```text
+用 $agent-dev-docs 先帮我把这个项目整理成 AI 可执行的开发文档。
+```
+
+为单个功能生成文档：
+
+```text
+用 $agent-dev-docs 为登录功能创建 PRD、Agent-Ready PRD、Spec 和 Workplan。
+```
+
+只想先看草稿、不写入文件：
+
+```text
+用 $agent-dev-docs 先输出文档草稿，不要修改仓库文件。
+```
+
+### 典型场景
+
+| 场景 | 示例提示词 | 通常生成 |
+| --- | --- | --- |
+| 新项目想法 | `用 $agent-dev-docs 规划一个个人记账 Web App` | Vision/Requirements、PRD、Agent-Ready PRD、Spec、Workplan |
+| 现有仓库补文档 | `用 $agent-dev-docs 为这个仓库补齐 Agent 可执行文档` | Design、AGENTS.md、Development Standards、Test/Boundary Cases |
+| 单个功能 | `用 $agent-dev-docs 为导入 CSV 功能生成实现文档` | `docs/features/<feature-slug>/` 下的 PRD、Spec、Workplan、测试边界 |
+| Agent 协作规范 | `用 $agent-dev-docs 创建 AGENTS.md 和 .ai 工作流` | AGENTS.md、`.ai/workflow.md`、`.ai/checklists/implementation.md` |
+
+### 示例输出
+
+输入：
+
+```text
+用 $agent-dev-docs 规划一个个人记账 Web App，支持记账、分类、月度统计。
+```
+
+可能生成：
+
+```text
+docs/vision-requirements.md
+docs/prd.md
+docs/agent-ready-prd.md
+docs/spec.md
+docs/workplan.md
+AGENTS.md
+```
+
+生成内容会包含类似信息：
+
+```markdown
+## Acceptance Criteria
+
+- 用户可以创建一条包含金额、分类、日期和备注的支出记录。
+- 当金额为空、为负数或不是数字时，界面必须显示可理解的错误信息。
+- 月度统计必须按自然月汇总，并在没有记录时显示空状态。
+
+## Assumptions
+
+- Assumption: 初始版本只支持单用户本地账户，不包含多人协作。
+```
+
 ### 会生成哪些文档
 
 根据项目阶段不同，这个 skill 可以创建或更新：
@@ -53,30 +130,14 @@
 - `CLAUDE.md`
 - `.ai/` 工作流文件、提示词模板和检查清单
 
-### 什么时候使用
+### 使用前你需要知道
 
-适合在这些场景中使用：
+- 它会优先读取当前仓库结构，再决定文档放在哪里。
+- 它默认生成最小必要文档集，不会每次都创建全部文件。
+- 它应保留已有文档；不确定是否覆盖时，应创建功能级文档或先说明拟修改内容。
+- 信息不足时，它会使用 `Assumption:` 或 `Open question:` 标出假设和待确认问题。
+- 你可以明确要求“只输出草稿，不写入文件”。
 
-- 启动一个新的 AI 辅助开发项目。
-- 把粗略产品想法整理成可实施的开发文档。
-- 为现有仓库补齐 AI Agent 可遵循的项目说明。
-- 创建 Agent-Ready PRD、实现规格说明或工作计划。
-- 通过 `AGENTS.md`、`CLAUDE.md` 或 `.ai/` 统一项目级 AI 协作规范。
-
-### 快速开始
-
-把本目录安装或放置到 Codex skills 目录后，直接按名称调用：
-
-```text
-用 $agent-dev-docs 先帮我把这个项目整理成 AI 可执行的开发文档。
-```
-
-针对单个功能的示例：
-
-```text
-用 $agent-dev-docs 为这个功能创建 PRD、Agent-Ready PRD、Spec 和 Workplan。
-```
-也可以下载项目成ZIP文件直接导入到CC Switch中
 ### Skill 结构
 
 ```text
@@ -131,6 +192,83 @@ It is designed for AI-assisted software development workflows where future codin
 | Minimal by default | Generates the smallest useful documentation set for the current stage. |
 | Assumption tracking | Marks unresolved decisions as assumptions or open questions instead of hiding ambiguity. |
 
+### Installation
+
+Download or clone this repository, then place the whole `agent-dev-docs` folder in your Codex skills directory.
+
+Common locations:
+
+```text
+Windows: %USERPROFILE%\.codex\skills\agent-dev-docs
+macOS/Linux: ~/.codex/skills/agent-dev-docs
+```
+
+Restart or refresh Codex after installation, then invoke the skill with a prompt that includes `$agent-dev-docs`.
+
+If you use CC Switch, you can also download this project as a ZIP file and import it through CC Switch. Follow the import flow for your current CC Switch version.
+
+### Quick Start
+
+Generate docs for a new project:
+
+```text
+Use $agent-dev-docs to turn this idea into an AI-ready development document set.
+```
+
+Generate docs for a single feature:
+
+```text
+Use $agent-dev-docs to create a PRD, Agent-Ready PRD, spec, and workplan for the login feature.
+```
+
+Preview a draft without writing files:
+
+```text
+Use $agent-dev-docs to draft the documents first without modifying repository files.
+```
+
+### Common Scenarios
+
+| Scenario | Example prompt | Typical output |
+| --- | --- | --- |
+| New product idea | `Use $agent-dev-docs to plan a personal budgeting web app` | Vision/Requirements, PRD, Agent-Ready PRD, Spec, Workplan |
+| Existing repo docs | `Use $agent-dev-docs to prepare this repo for future coding agents` | Design, AGENTS.md, Development Standards, Test/Boundary Cases |
+| Single feature | `Use $agent-dev-docs to document CSV import implementation` | Feature-scoped PRD, Spec, Workplan, Test/Boundary Cases under `docs/features/<feature-slug>/` |
+| Agent workflow | `Use $agent-dev-docs to create AGENTS.md and .ai workflow files` | AGENTS.md, `.ai/workflow.md`, `.ai/checklists/implementation.md` |
+
+### Example Output
+
+Input:
+
+```text
+Use $agent-dev-docs to plan a personal budgeting web app with expenses, categories, and monthly summaries.
+```
+
+Possible generated files:
+
+```text
+docs/vision-requirements.md
+docs/prd.md
+docs/agent-ready-prd.md
+docs/spec.md
+docs/workplan.md
+AGENTS.md
+```
+
+The generated content should include concrete, testable details:
+
+```markdown
+## Acceptance Criteria
+
+- A user can create an expense with amount, category, date, and optional note.
+- Empty, negative, or non-numeric amounts show a clear validation error.
+- Monthly summaries aggregate by calendar month and show an empty state when no records exist.
+
+## Assumptions
+
+- Assumption: The first release is single-user only and does not include collaboration.
+```
+
 ### Generated Documents
 
 Depending on the project stage, the skill can create or update:
@@ -148,29 +286,13 @@ Depending on the project stage, the skill can create or update:
 - `CLAUDE.md`
 - `.ai/` workflow files, prompt templates, and checklists
 
-### When To Use
+### Before You Use It
 
-Use this skill when you are:
-
-- Starting a new AI-assisted software project.
-- Turning a rough product idea into implementation-ready documentation.
-- Preparing an existing repository so future AI agents can contribute safely.
-- Creating an Agent-Ready PRD, implementation spec, or workplan.
-- Standardizing project instructions through `AGENTS.md`, `CLAUDE.md`, or `.ai/`.
-
-### Quick Start
-
-Install or place this folder in your Codex skills directory, then invoke it by name:
-
-```text
-Use $agent-dev-docs to turn this idea into an AI-ready development document set.
-```
-
-Feature-scoped example:
-
-```text
-Use $agent-dev-docs to create a PRD, Agent-Ready PRD, spec, and workplan for this feature.
-```
+- It should inspect the current repository structure before choosing file paths.
+- It defaults to the smallest useful document set, not every possible file.
+- It should preserve existing docs; when overwrite intent is unclear, it should create feature-scoped files or explain proposed updates first.
+- Missing context should be marked as `Assumption:` or `Open question:`.
+- You can explicitly ask for draft-only output if you do not want files written yet.
 
 ### Skill Structure
 
